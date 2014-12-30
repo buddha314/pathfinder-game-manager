@@ -6,3 +6,19 @@ A simple Flask app to keep track of players, characters and experience points.  
 Dear Reader,
 
 Feel free to copy anything here, it may not work.
+
+## Dependencies
+
+* Python
+* Fabric
+
+## Running the Application
+
+Get the local environment setup
+
+    > fab setup
+
+
+Run the application
+    > source env/bin/activate
+    > python run.py

@@ -1,0 +1,20 @@
+{% extends 'layout.main.html' %}
+
+{% block content %}
+
+    <div class="row box-error">
+
+        <div class="col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
+
+            <h1>500</h1>
+
+            <h2>You have experienced a technical error. Please try one of the following:</h2>
+            <ol>
+                <li>Go <a href="javascript:history.back()">back</a></li>
+                <li>Report the issue to your support team.</li>
+                <li>Return to <a href="{{ url_for('.dashboard') }}">the homepage</a></li>
+            </ol>
+        </div>
+
+    </div>
+{% endblock %}

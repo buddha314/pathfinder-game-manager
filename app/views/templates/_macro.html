@@ -1,0 +1,57 @@
+
+{% macro render_pagination(pagination, endpoint, limit, sort=None, search=None) -%}
+    <div class="dataTables_paginate">
+        {% if pagination.pages > 1 %}
+            <ul class="pagination pull-right">
+                <!-- start previous button -->
+                {% if pagination.has_prev %}
+                    <li class="prev">
+                        <a href="{{ url_for(endpoint, page = pagination.prev_num, sort=sort, search=search) }}">
+                            ← Previous
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="prev disabled">
+                        <a href="#">
+                            ← Previous
+                        </a>
+                    </li>
+                {% endif %}
+                <!-- end previous button -->
+
+                {% for page in pagination.iter_pages(right_edge=1) %}
+                    {% if page %}
+                        <li {% if page == pagination.page %} class="active" {% endif %}>
+                            <a href="{{ url_for(endpoint,  page=page, sort=sort, search=search) }}">
+                                {{ page }}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a href="#">
+                                ...
+                            </a>
+                        </li>
+
+                    {% endif %}
+                {% endfor %}
+
+                <!--start next button-->
+                {% if pagination.has_next %}
+                    <li class="next">
+                        <a href="{{ url_for(endpoint, page = pagination.next_num, sort=sort, search=search) }}">
+                            Next →
+                        </a>
+                    </li>
+                {% else %}
+                    <li class="next disabled">
+                        <a href="#">
+                            → Next
+                        </a>
+                    </li>
+                {% endif %}
+                <!--end next button -->
+            </ul>
+        {% endif %}
+    </div>
+{%- endmacro %}
